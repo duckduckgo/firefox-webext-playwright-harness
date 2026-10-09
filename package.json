@@ -8,9 +8,6 @@
     "workspaces": [
         "tests"
     ],
-    "engines": {
-        "node": ">=20"
-    },
     "main": "src/index.js",
     "exports": {
         ".": "./src/index.js",
