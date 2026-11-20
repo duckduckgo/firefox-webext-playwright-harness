@@ -6,9 +6,30 @@ updates:
     schedule:
       interval: "weekly"
     open-pull-requests-limit: 10
+    groups:
+      # @playwright/test is pinned in tests/ and a peer/dev dependency at the root,
+      # so keep both in step.
+      playwright:
+        patterns:
+          - "@playwright/*"
+          - "playwright"
+          - "playwright-core"
+      # Lint tooling: ESLint, the shared DDG config and its globals list.
+      eslint:
+        patterns:
+          - "eslint"
+          - "@eslint/*"
+          - "@duckduckgo/eslint-config"
+          - "globals"
+    # jszip (the only runtime dependency) is left ungrouped so its updates get
+    # their own pull request.
 
   # GitHub Actions used in .github/workflows.
   - package-ecosystem: "github-actions"
     directory: "/"
     schedule:
       interval: "weekly"
+    groups:
+      github-actions:
+        patterns:
+          - "*"
