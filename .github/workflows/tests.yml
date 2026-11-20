@@ -7,7 +7,10 @@ on:
 
 jobs:
   integration:
-    runs-on: ubuntu-latest
+    # Pinned: Playwright only supports Firefox on the Ubuntu releases it knows
+    # about, so `ubuntu-latest` rolling forward breaks `playwright install`.
+    # Bump alongside @playwright/test.
+    runs-on: ubuntu-24.04
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v6
